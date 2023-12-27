@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Adicione os meta tags, links para CSS e scripts necessários aqui -->
+    <meta charset="UTF-8">
+    <title>Sign Up Signin</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href="login-ps-login.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1152183585546178571/1184138897471578193/letter-td-dt-initials-simple-lines-minimal-minimalist-modern-monogram-vector-logo-design_216988-1649.png?ex=658ae249&is=65786d49&hm=c533ccd11a9545b830ab7c6b64560328d2055d6b9bc1ed0f3f17b6e62d2aecf6&">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css'>
+</head>
+
+<body>
+    <div id="form">
+        <div class="container">
+            <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-md-8 col-md-offset-2">
+                <div id="userform">
+                    <div class="tab-content">
+                        <div class="tab-pane fade active in" id="login">
+                            <h2 class="text-uppercase text-center"> Iniciar sessão</h2>
+                            <form id="loginForm">
+                                <div class="form-group">
+                                    <label> Insira o seu e-mail<span class="req">*</span> </label>
+                                    <input type="email" class="form-control" id="email" required data-validation-required-message="Please enter your email address." autocomplete="off">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label> Insira a sua palavra-passe<span class="req">*</span> </label>
+                                    <input type="password" class="form-control" id="password" required data-validation-required-message="Please enter your password" autocomplete="off">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label> Insira o seu código secreto<span class="req">*</span> </label>
+                                    <input type="tel" class="form-control" id="code" required data-validation-required-message="Please enter your phone number." autocomplete="off">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div><i class="fa fa-info-circle text-info"><a href="candidatar.html"> Obter declaração</a></i></div>
+                                <div class="mrgn-30-top">
+                                    <button type="submit" class="btn btn-larger btn-block">
+                                        Entrar
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
+    <script src="../lib/jquery/dist/jquery.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const loginForm = document.getElementById('loginForm');
+
+            loginForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                // Obter dados do formulário
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const code = document.getElementById('code').value;
+
+                // Obter dados da Local Storage
+                const userDetails = JSON.parse(localStorage.getItem('userDetails'));
+
+                // Verificar se existe um usuário correspondente
+                const matchedUser = userDetails.find(user => user.email === email &&
+                    user.password === password &&
+                    user.code.toString() === code);  // Convertendo para string para comparação
+
+                if (matchedUser) {
+                    // Redirecionar para 'ps-serviços.html'
+                    window.location.href = 'ps-serviços.html';
+                } else {
+                    alert('Credenciais inválidas. Por favor, verifique e tente novamente.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

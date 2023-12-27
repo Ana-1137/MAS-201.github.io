@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>TidyNow</title>
+    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1152183585546178571/1184138897471578193/letter-td-dt-initials-simple-lines-minimal-minimalist-modern-monogram-vector-logo-design_216988-1649.png?ex=658ae249&is=65786d49&hm=c533ccd11a9545b830ab7c6b64560328d2055d6b9bc1ed0f3f17b6e62d2aecf6&">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
+    <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href=" https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <style>
+        body {
+            padding-top: 100px; /* Add padding to the bottom to prevent content from being cut off by the footer */
+            background-color: #ecfeff;
+            background: linear-gradient(to bottom, #ecfeff, #b3d6d2, #aaadd5);
+        }
+
+        #cabeçalho {
+            backdrop-filter: blur(55px);
+            background-color: rgba(135, 206, 250, 0.2);
+        }
+
+        #rodape {
+            background: linear-gradient(to bottom, #05013f, #040a22);
+            color: whitesmoke;
+        }
+        a,
+        h1,
+        #back-top {
+            color: #337ab7;
+            text-decoration: none
+        }
+
+        h1,
+        h2 {
+            font-family: "Prata", serif
+        }
+
+        .content {
+            width: 75%;
+            margin: 50px auto
+        }
+
+        #back-top {
+            position: fixed;
+            bottom: 0;
+            left: 10%;
+            z-index: 1000;
+            display: none;
+            cursor: pointer;
+            font-size: 1.6rem;
+            background: white;
+            padding: 1rem
+        }
+
+        .fly {
+            position: absolute;
+            animation: launch ease-in-out 3s infinite;
+            -webkit-animation: launch ease-in-out 3s infinite
+        }
+
+        @-webkit-keyframes launch {
+            100% {
+                transform: translateY(-800px) translateX(800px);
+            }
+        }
+
+        @keyframes launch {
+            100% {
+                transform: translateY(-800px) translateX(800px);
+            }
+        }
+
+        @media (min-width: 500px) {
+            .content {
+                width: 45%
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="cabeçalho" class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html" tabindex="TidyNow"><img src="https://cdn.discordapp.com/attachments/1152183585546178571/1189350056848007178/instagram_profile_image-removebg-preview.png?ex=659dd78e&is=658b628e&hm=51a462ee33fbf1a26c7940889924c7e48ad5bb1d287acddfd683829eead5e5d2&" height="60" style="border: none;" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="sobre.html"><i class="fa fa-book text-primary"></i> Quem Somos</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="serviços.html"><i class="fa fa-handshake-o text-danger"></i> Serviços</a></li>
+
+                </ul>
+                <ul class="navbar-nav justify-content-end">
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="carrinho.html"><i class="fa fa-shopping-cart text-primary"></i> Carrinho</a></li>
+                    <li class="navbar-text hstack"><div class="vr"></div></li>
+                    <li class="nav-item dropdown" id="loginLink">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user-circle text-danger"></i> Conta
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="login.html">Utilizador</a>
+                            <a class="dropdown-item" href="login-ps.html">Prestador de Serviços</a>
+                        </div>
+                    </li>
+                    <li class="nav-item" id="logoutLink" style="display: none;"><a class="nav-link" aria-current="page" href="#" onclick="handleLogout()"><i class="fa fa-sign-out text-danger"></i> Log out</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="back-top">
+        Back to top <span class="rocket">🚀</span>
+    </div>
+
+    <!-- Content to fill the page -->
+    <div class="content">
+        <h1>Bem-vindo à essência da TiddyNow,</h1>
+        <h2><i>um reflexo da visão e dedicação da CleanNow na redefinição dos padrões de serviços de limpeza.</i></h2>
+        <p>A nossa jornada começa com a compreensão profunda das demandas modernas, onde o tempo é um luxo escasso e a busca por praticidade é incessante.</p>
+        <img src="https://cdn.discordapp.com/attachments/1152283475148283944/1189365511407009822/empresa.jpg?ex=659de5f3&is=658b70f3&hm=0fe67b864cb828cce935ab03aff610b9e35a0f48a0ebaed0f55e97099a46ad3a&" width="100%" />
+        <p> </p>
+        <p><strong>A TiddyNow não é apenas um site, é uma manifestação tangível da nossa missão de simplificar a vida diária através de soluções de limpeza eficientes.</strong> Num mundo onde a complexidade muitas vezes obscurece a simplicidade, procuramos trazer clareza e facilidade ao processo de agendar serviços de limpeza.</p>
+
+        <p><strong>No coração do TiddyNow reside a convicção de que a limpeza vai além da remoção de sujidade.</strong> É um ato que restaura não apenas a ordem física, mas também proporciona tranquilidade e espaço para o que realmente importa na vida. Cada clique na nossa plataforma representa uma jornada em direção a ambientes imaculados e uma vida mais descomplicada.</p>
+
+        <p><strong>A nossa oferta de serviços abrange uma ampla gama de necessidades, desde a simplicidade da limpeza residencial até a complexidade de vários objetos.</strong> O TiddyNow é a expressão da versatilidade e adaptabilidade que procuramos incorporar nos nossos serviços, para atender às necessidades únicas de cada cliente.</p>
+
+        <p><strong>Não nos limitamos apenas à eficácia operacional, comprometemo-nos com a responsabilidade social e ambiental.</strong> Acreditamos que o nosso papel transcende a mera prestação de serviços, estendendo-se à construção de comunidades sustentáveis e conscientes.</p>
+
+        <p><strong>A história do TiddyNow é uma narrativa de evolução contínua.</strong> Aprendemos com cada interação, ouvimos os nossos utilizadores e adaptamos a nossa abordagem para refletir as expectativas em constante mudança. Estamos comprometidos com a inovação constante, com o objetivo de oferecer não apenas um serviço, mas uma experiência que transcenda as fronteiras convencionais.</p>
+
+        <p><strong>Ao escolher a TiddyNow, não apenas contratam um serviço de limpeza, tornam-se parte de uma comunidade que valoriza a qualidade, a confiabilidade e a simplicidade.</strong> Estamos entusiasmados com a oportunidade de fazer parte da vossa jornada em direção a um ambiente mais limpo e uma vida mais descomplicada.</p>
+
+        <p><strong>Obrigado por confiar no TiddyNow - onde a limpeza encontra a modernidade.</strong></p>
+    </div>
+    <nav id="rodape" class="navbar navbar-expand-lg">
+        <div class="container mt-3">
+            <div class="col-md-6 mb-3">
+                <div>Estamos aqui para tornar o seu espaço impecável. Dúvidas? Entre em contato conosco. A sua satisfação é a nossa prioridade!</div>
+                <br />
+                <div style="font-size:15px;">
+                    <div><i class="fa fa-phone">  +351 9XX XXX XXX</i></div>
+                    <div><i class="fa fa-envelope">  tiddynow@example.com</i></div>
+                    <br />
+                    <div>Dias úteis - 7h às 22h<br />Fins de semana e feriados - 9h às 20h</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">
+                    <div>Faça parte da nossa equipa e candidate-se a prestador de serviços</div>
+                    <div class="mt-3" id="candidatar"><a href="candidatar.html"><button type="button" class="btn btn-info btn-sm">Candidate-se</button></a></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Verifica se o usuário está logado ao carregar a página
+        window.onload = function () {
+            const loggedInUser = localStorage.getItem('loggedInUser');
+            const logoutLink = document.getElementById('logoutLink');
+            const loginLink = document.getElementById('loginLink');
+
+            if (loggedInUser) {
+                // Se estiver logado, mostra a opção de logout e esconde a de login
+                logoutLink.style.display = 'block';
+                loginLink.style.display = 'none';
+            } else {
+                // Se não estiver logado, mostra a opção de login e esconde a de logout
+                logoutLink.style.display = 'none';
+                loginLink.style.display = 'block';
+            }
+        };
+
+        function handleLogout() {
+            // Limpa o localStorage
+            localStorage.removeItem('loggedInUser');
+
+            // Oculta a opção de logout e exibe a opção de login
+            const logoutLink = document.getElementById('logoutLink');
+            const loginLink = document.getElementById('loginLink');
+            logoutLink.style.display = 'none';
+            loginLink.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

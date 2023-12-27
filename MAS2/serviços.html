@@ -1,0 +1,271 @@
+﻿<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="Serviços">
+    <title>TidyNow-Serviços</title>
+    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1152183585546178571/1184138897471578193/letter-td-dt-initials-simple-lines-minimal-minimalist-modern-monogram-vector-logo-design_216988-1649.png?ex=658ae249&is=65786d49&hm=c533ccd11a9545b830ab7c6b64560328d2055d6b9bc1ed0f3f17b6e62d2aecf6&">
+    <meta name="viewport" content="width=device-width">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
+    <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href=" https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+
+    <style>
+        body {
+            padding-top: 50px; /* Add padding to the bottom to prevent content from being cut off by the footer */
+            background: linear-gradient(to bottom, #ecfeff, #b3d6d2, #aaadd5);
+        }
+
+        #cabeçalho {
+            backdrop-filter: blur(55px);
+            background-color: rgba(135, 206, 250, 0.2);
+        }
+
+        #rodape {
+            background: linear-gradient(to bottom, #05013f, #040a22);
+            color: whitesmoke;
+        }
+
+        .banner {
+            background: #08152b;
+            background: -webkit-linear-gradient(to right, #08152b, #05013f, #56c8be);
+            background: linear-gradient(to right, #08152b, #05013f, #56c8be);
+        }
+
+        .p {
+            white-space: nowrap;
+            width: 100%;
+            overflow: hidden; /* "overflow" value must be different from "visible" */
+
+            text-overflow: ellipsis;
+        }
+
+        .cart-btn {
+            display: inline-block;
+            background-color: #358ED7;
+            border-radius: 30px;
+            font-size: 10px;
+            color: #FFFFFF;
+            text-decoration: none;
+            padding: 11px 20px;
+            transition: all .5s;
+        }
+
+    </style>
+</head>
+
+<body>
+    <nav id="cabeçalho" class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html" tabindex="TidyNow"><img src="https://cdn.discordapp.com/attachments/1152183585546178571/1189350056848007178/instagram_profile_image-removebg-preview.png?ex=659dd78e&is=658b628e&hm=51a462ee33fbf1a26c7940889924c7e48ad5bb1d287acddfd683829eead5e5d2&" height="60" style="border: none;" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="sobre.html"><i class="fa fa-book text-primary"></i> Quem Somos</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="serviços.html"><i class="fa fa-handshake-o text-danger"></i> Serviços</a></li>
+
+                </ul>
+                <ul class="navbar-nav justify-content-end">
+                    <li><div class="col-md-2 text-right mt-1"><button type="button" id="cleanBtn" onclick="clean()" class="btn btn-sm" title="Limpar pedido"><i class="fa fa-trash-o"></i></button></div></li>
+                    <li>
+                        <div class="col-md-2 text-right mt-2 mx-1">
+                            <span id="total" title="Preço total da compra">0.00€</span>
+                            <ul id="cartList" style="list-style-type: none; padding: 0;"></ul>
+                        </div>
+                    </li>                    
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="carrinho.html"><i class="fa fa-shopping-cart text-primary"></i> Carrinho</a></li>
+                    <li class="navbar-text hstack"><div class="vr"></div></li>
+                    <li class="nav-item dropdown" id="loginLink">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user-circle text-danger"></i> Conta
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="login.html">Utilizador</a>
+                            <a class="dropdown-item" href="login-ps.html">Prestador de Serviços</a>
+                        </div>
+                    </li>
+                    <li class="nav-item" id="logoutLink" style="display: none;"><a class="nav-link" aria-current="page" href="#" onclick="handleLogout()"><i class="fa fa-sign-out text-danger"></i> Log out</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="px-lg-5">
+
+            <!-- For demo purpose -->
+            <div class="row py-5">
+                <div class="col-lg-12 mx-auto">
+                    <div class="text-white p-5 shadow-sm rounded banner">
+                        <h1 class="display-4">Serviços</h1>
+                        <p class="lead">
+                            Oferecemos serviços de limpeza excepcionais, transformando espaços com dedicação e qualidade.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- End -->
+
+            <div class="row">
+                <!-- Gallery item -->
+                <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                    <div class="bg-white rounded shadow-sm">
+                        <img style="height: 172.93px; width: stretch; " img src="https://cdn.discordapp.com/attachments/1152183585546178571/1189305362172620810/chao.jpg?ex=659dadee&is=658b38ee&hm=246dd6dcd1c94aa0beaa1616229429350873bc9fa0060c56fb4d5cef45708480&" alt="" class="img-fluid card-img-top">
+                        <div class="p-4">
+                            <h5> <a href="p-chao.html" class="text-dark service-name" id="serviceName1">Casa</a></h5>
+                            <p class="small text-muted mb-0">
+                                É necessário que o local tenha eletricidade e acesso a água...
+                            </p>
+                            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                                <p class="small mb-0"><span class="text-primary" id="price1" name="price1" value="7.99" data-added="false">7.99 € / h</span></p>
+                                <button type="button" class="btn cart-btn" onclick="this.blur(); addProduct(1)">Adicionar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End -->
+                <!-- Gallery item -->
+                <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                    <div class="bg-white rounded shadow-sm">
+                        <img style="height: 172.93px; width:stretch; " img src="https://cdn.discordapp.com/attachments/1152183585546178571/1189305360536838226/arc.png?ex=659dadee&is=658b38ee&hm=5b2970c801bb2dd98db9b30918fba207c53b6451cafc8e11a57dd4f561c3d040&" alt="" class="img-fluid card-img-top">
+                        <div class="p-4">
+                            <h5> <a href="p-arc.html" class="text-dark service-name" id="serviceName2">Ar condicionado</a></h5>
+                            <p class="small text-muted mb-0">É necessário que o local tenha eletricidade e acesso a água...</p>
+                            <input type="hidden" id="qty2" name="qty2" value="0" />
+                            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                                <p class="small mb-0"><span class="text-primary" id="price2" name="price2" value="124.99" data-added="false">124.99€ / un.</span></p>
+                                <button type="button" class="btn cart-btn" onclick="this.blur(); addProduct(2)">Adicionar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End -->
+                <!-- Gallery item -->
+                <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                    <div class="bg-white rounded shadow-sm">
+                        <img style="height: 172.93px; width:stretch; " img src="https://cdn.discordapp.com/attachments/1152183585546178571/1189305360801083392/colchoes.webp?ex=659dadee&is=658b38ee&hm=6d8b493d67c24e2debaae40bce4d032ac0ea57abbc184f7cdf796c045bbe0074&" alt="" class="img-fluid card-img-top">
+                        <div class="p-4">
+                            <h5> <a href="p-colch.html" class="text-dark service-name" id="serviceName3">Colchões</a></h5>
+                            <p class="small text-muted mb-0">A limpeza é feita através do método de injeção e extração de água...</p>
+                            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                                <p class="small mb-0"><span class="text-primary" id="price3" name="price3" value="24.99" data-added="false">24.99 € / un.</span></p>
+                                <button type="button" class="btn cart-btn" onclick="this.blur(); addProduct(3)">Adicionar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End -->
+                <!-- Gallery item -->
+                <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                    <div class="bg-white rounded shadow-sm">
+                        <img style="height: 172.93px; width:stretch; " img src="https://cdn.discordapp.com/attachments/1152183585546178571/1189305362428465292/01-limpeza-de-estofados.jpg?ex=659dadee&is=658b38ee&hm=2f16bd16ca7e9b3463354abd09ce0d27d1f61401e585aabe0ad42c2a092d4c25&" alt="" class="img-fluid card-img-top">
+                        <div class="p-4">
+                            <h5> <a href="p-sofas.html" class="text-dark service-name" id="serviceName4">Sofás</a></h5>
+                            <p class="small text-muted mb-0">Inclui apenas 1 sofá. Se o pedido incluir mais sofás, será contactado...</p>
+                            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                                <p class="small mb-0"><span class="text-primary" id="price4" name="price4" value="31.99" data-added="false">31.99 € / un</span></p>
+                                <button type="button" class="btn cart-btn" onclick="this.blur(); addProduct(4)">Adicionar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End -->
+                <!-- Gallery item -->
+                <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                    <div class="bg-white rounded shadow-sm">
+                        <img style="height: 172.93px; width: stretch; " img src="https://cdn.discordapp.com/attachments/1152183585546178571/1189305360230658058/humi.jpg?ex=659dadee&is=658b38ee&hm=6a02c0015b767073cb33f08e02ff2904a561a6d0dcb3d1265dce9274979ad6d4&" alt="" class="img-fluid card-img-top">
+                        <div class="p-4">
+                            <h5> <a href="p-humi.html" class="text-dark service-name" id="serviceName5">Humidade</a></h5>
+                            <p class="small text-muted mb-0">A limpeza de humidade realiza-se para remoção do fungo que se...</p>
+                            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                                <p class="small mb-0"><span class="text-primary" id="price5" name="price5" value="59.99" data-added="false">59.99€</span></p>
+                                <button type="button" class="btn cart-btn" onclick="this.blur(); addProduct(5)">Adicionar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End -->
+                <!-- Gallery item -->
+                <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                    <div class="bg-white rounded shadow-sm">
+                        <img style="height: 172.93px; width:stretch; " img src="https://cdn.discordapp.com/attachments/1152183585546178571/1189305359953830039/janelas.jpg?ex=659dadee&is=658b38ee&hm=d44446652384a53d572561a8d419d5c482ae166a1d81f9b4d502c1b2ca29ed96&" alt="" class="img-fluid card-img-top">
+                        <div class="p-4">
+                            <h5> <a href="p-vidros.html" class="text-dark service-name" id="serviceName6">Vidros e Janelas</a></h5>
+                            <p class="small text-muted mb-0">Este serviço exclui limpeza de vidros de difícil acesso, limpeza dos...</p>
+                            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                                <p class="small mb-0"><span class="text-primary" id="price6" name="price6" value="19.99" data-added="false">19.99€ / h</span></p>
+                                <button type="button" class="btn cart-btn" onclick="this.blur(); addProduct(6)">Adicionar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End -->
+                <!-- Gallery item -->
+                <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                    <div class="bg-white rounded shadow-sm">
+                        <img style="height: 172.93px; width:stretch; " img src="https://cdn.discordapp.com/attachments/1152183585546178571/1189305361224699914/limpar-os-azulejos-parede.jpg?ex=659dadee&is=658b38ee&hm=f8473e7f99432d1dac73741f0398bd5625b3f4f481df63224252d2459802305c&" alt="" class="img-fluid card-img-top">
+                        <div class="p-4">
+                            <span class="service-name" id="serviceName7"><h5> <a href="p-azulejos.html" class="text-dark">Azulejos</a></h5></span>
+                            <p class="small text-muted mb-0">O serviço mínimo inclui os primeiros 4 m² e a deslocação do técnico.</p>
+                            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                                <p class="small mb-0"><span class="text-primary" id="price7" name="price7" value="24.99" data-added="false">24.99 €</span></p>
+                                <button type="button" class="btn cart-btn" onclick="this.blur(); addProduct(7)">Adicionar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End -->
+                <!-- Gallery item -->
+                <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                    <div class="bg-white rounded shadow-sm">
+                        <img style="height: 172.93px; width:stretch; " img src="https://cdn.discordapp.com/attachments/1152183585546178571/1189305361841266748/limpeza-alcatifa-carpete-tapete.jpg?ex=659dadee&is=658b38ee&hm=7c513c700e9477f45591ba608263c02a6fde545fe775e29eedf6217c20b6627d&" alt="" class="img-fluid card-img-top">
+                        <div class="p-4">
+                            <h5> <a href="p-tapetes.html" class="text-dark service-name" id="serviceName8">Tapetes</a></h5>
+                            <p class="small text-muted mb-0">O serviço inclui limpeza de tapetes, carpetes ou alcatifas em casa.</p>
+                            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                                <p class="small mb-0"><span class="text-primary" id="price8" name="price8" value="6.99" data-added="false">6.99 € / m²</span></p>
+                                <button type="button" class="btn cart-btn" onclick="this.blur(); addProduct(8)">Adicionar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End -->
+
+            </div>
+            <hr />
+        </div>
+    </div>
+    <nav id="rodape" class="navbar navbar-expand-lg">
+        <div class="container mt-3">
+            <div class="col-md-6 mb-3">
+                <div>Estamos aqui para tornar o seu espaço impecável. Dúvidas? Entre em contato conosco. A sua satisfação é a nossa prioridade!</div>
+                <br />
+                <div style="font-size:15px;">
+                    <div><i class="fa fa-phone">  +351 9XX XXX XXX</i></div>
+                    <div><i class="fa fa-envelope">  tiddynow@example.com</i></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="">
+                    <br />
+                    <br />
+                    <div>Dias úteis - 7h às 22h<br />Fins de semana e feriados - 9h às 20h</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+
+    <script src="serviços.js"></script>
+    
+</body>
+
+</html>

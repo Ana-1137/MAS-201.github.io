@@ -1,0 +1,708 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>TidyNow</title>
+    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1152183585546178571/1184138897471578193/letter-td-dt-initials-simple-lines-minimal-minimalist-modern-monogram-vector-logo-design_216988-1649.png?ex=658ae249&is=65786d49&hm=c533ccd11a9545b830ab7c6b64560328d2055d6b9bc1ed0f3f17b6e62d2aecf6&">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
+    <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <style>
+        body {
+            padding-top: 100px; /* Add padding to the bottom to prevent content from being cut off by the footer */
+            background-color: #ecfeff;
+            background: linear-gradient(to bottom, #ecfeff, #b3d6d2, #aaadd5);
+        }
+
+        #cabeçalho {
+            backdrop-filter: blur(55px);
+            background-color: rgba(135, 206, 250, 0.2);
+        }
+
+        #rodape {
+            background: linear-gradient(to bottom, #05013f, #040a22);
+            color: whitesmoke;
+        }
+
+
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+        .container {
+            margin: 30px auto;
+        }
+
+            .container .card {
+                width: 100%;
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                background: #fff;
+                border-radius: 0px;
+            }
+
+        .pago {
+            width: 20%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 15px;
+            background-image: linear-gradient(to right, #77A1D3 0%, #79CBCA 51%, #77A1D3 100%);
+            border: none;
+            transition: 0.5s;
+            background-size: 200% auto;
+            border-radius: 20px;
+        }
+
+        .btn.btn-primary {
+            background-color: #ddd;
+            color: black;
+            box-shadow: none;
+            border: none;
+            font-size: 20px;
+            width: 100%;
+            height: 100%;
+        }
+
+            .btn.btn-primary:focus {
+                box-shadow: none;
+            }
+
+        .container .card .img-box {
+            width: 80px;
+            height: 50px;
+        }
+
+        .container .card img {
+            width: 100%;
+            object-fit: fill;
+        }
+
+        .container .card .number {
+            font-size: 24px;
+        }
+
+        .container .card-body .btn.btn-primary .fab.fa-cc-paypal {
+            font-size: 32px;
+            color: #3333f7;
+        }
+
+        .fab.fa-cc-amex {
+            color: #1c6acf;
+            font-size: 32px;
+        }
+
+        .fab.fa-cc-mastercard {
+            font-size: 32px;
+            color: red;
+        }
+
+        .fab.fa-cc-discover {
+            font-size: 32px;
+            color: orange;
+        }
+
+        .c-green {
+            color: green;
+        }
+
+        .box {
+            height: 40px;
+            width: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ddd;
+        }
+
+        .btn.btn-primary.payment {
+            background-color: #1c6acf;
+            color: white;
+            border-radius: 0px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 24px;
+        }
+
+
+        .form__div {
+            height: 50px;
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .form-control {
+            width: 100%;
+            height: 45px;
+            font-size: 14px;
+            border: 1px solid #DADCE0;
+            border-radius: 0;
+            outline: none;
+            padding: 2px;
+            background: none;
+            z-index: 1;
+            box-shadow: none;
+        }
+
+        .form__label {
+            position: absolute;
+            left: 16px;
+            top: 10px;
+            background-color: #fff;
+            color: #80868B;
+            font-size: 16px;
+            transition: .3s;
+            text-transform: uppercase;
+        }
+
+        .form-control:focus + .form__label {
+            top: -8px;
+            left: 12px;
+            color: #1A73E8;
+            font-size: 12px;
+            font-weight: 500;
+            z-index: 10;
+        }
+
+        .form-control:not(:placeholder-shown).form-control:not(:focus) + .form__label {
+            top: -8px;
+            left: 12px;
+            font-size: 12px;
+            font-weight: 500;
+            z-index: 10;
+        }
+
+        .form-control:focus {
+            border: 1.5px solid #1A73E8;
+            box-shadow: none;
+        }
+
+        .banner {
+            position: relative;
+            background-image: url('https://merchant.razer.com/v3/wp-content/uploads/2016/03/driving-value-alt-payment-banner.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+            .banner::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background: linear-gradient(to left, transparent 0%, rgba(0, 0, 0, 0.5) 100%);
+                z-index: 1; /* Certifique-se de que a sobreposição esteja acima da imagem, mas abaixo do texto */
+            }
+
+            .banner h1 {
+                color: white; /* Adicione esta linha para tornar o texto branco */
+                position: relative;
+                z-index: 2; /* Certifique-se de que o texto esteja acima da sobreposição */
+            }
+
+        .table {
+            background-color: transparent;
+        }
+
+            .table thead th {
+                background-color: transparent;
+            }
+
+            .table tbody td {
+                background-color: transparent;
+            }
+    </style>
+</head>
+<body>
+    <nav id="cabeçalho" class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html" tabindex="TidyNow"><img src="https://cdn.discordapp.com/attachments/1152183585546178571/1189350056848007178/instagram_profile_image-removebg-preview.png?ex=659dd78e&is=658b628e&hm=51a462ee33fbf1a26c7940889924c7e48ad5bb1d287acddfd683829eead5e5d2&" height="60" style="border: none;" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="sobre.html"><i class="fa fa-book text-primary"></i> Quem Somos</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="serviços.html"><i class="fa fa-handshake-o text-danger"></i> Serviços</a></li>
+
+                </ul>
+                <ul class="navbar-nav justify-content-end">
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="carrinho.html"><i class="fa fa-shopping-cart text-primary"></i> Carrinho</a></li>
+                    <li class="navbar-text hstack"><div class="vr"></div></li>
+                    <li class="nav-item dropstart" id="loginLink">
+                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user-circle text-danger"></i> Conta
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="login.html">Entrar como Utilizador</a>
+                            <a class="dropdown-item" href="login-ps.html">Entrar como Prestador de Serviços</a>
+                        </div>
+                    </li>
+                    <li class="nav-item" id="logoutLink" style="display: none;"><a class="nav-link" aria-current="page" href="#" onclick="handleLogout()"><i class="fa fa-sign-out text-danger"></i> Log out</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="px-lg-5">
+
+            <div class="row py-5">
+                <div class="col-lg-12 mx-auto">
+                    <div class="text-white p-5 shadow-sm rounded banner">
+                        <h1 class="display-4">O seu Carrinho</h1>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carrinho -->
+            <div class="row">
+                <div class="col-lg-12 my-4">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Serviço</th>
+                                <th scope="col">Preço</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cartBody">
+                            <!-- Os serviços serão adicionados aqui dinamicamente -->
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2" style="background-color:transparent;" class="text-end"><strong>Subtotal:</strong> <span id="subtotal">0.00€</span></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- End Carrinho -->
+        <!-- Button trigger modal -->
+        <div class="text-center">
+            <button id="pago" type="button" class="pago mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal1">Finalizar Compra</button>
+        </div>
+
+        <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="distrito" class="col-form-label">Distrito:</label>
+                                <input type="text" class="form-control" id="distrito">
+                            </div>
+                            <div class="form-group">
+                                <label for="Rua" class="col-form-label">Rua:</label>
+                                <textarea class="form-control" id="Rua"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="data" class="col-form-label">Data:</label>
+                                <input type="text" class="form-control" id="data">
+                            </div>
+                            <div class="form-group">
+                                <label for="Hora" class="col-form-label">Hora:</label>
+                                <select class="form-control" id="Hora"></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="Observações" class="col-form-label">Observações:</label>
+                                <textarea class="form-control" id="Observações"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btnPagamento" class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" disabled>Ir para o pagamento</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-4 mb-lg-0 mb-3">
+                                <div class="card p-3">
+                                    <div class="img-box">
+                                        <img src="https://www.freepnglogos.com/uploads/visa-logo-download-png-21.png" alt="">
+                                    </div>
+                                    <div class="number">
+                                        <label class="fw-bold" for="">**** **** **** 1060</label>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <small><span class="fw-bold">Expiry date:</span><span>10/16</span></small>
+                                        <small><span class="fw-bold">Name:</span><span>Kumar</span></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 mb-lg-0 mb-3">
+                                <div class="card p-3">
+                                    <div class="img-box">
+                                        <img src="https://www.freepnglogos.com/uploads/mastercard-png/file-mastercard-logo-svg-wikimedia-commons-4.png"
+                                             alt="">
+                                    </div>
+                                    <div class="number">
+                                        <label class="fw-bold">**** **** **** 1060</label>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <small><span class="fw-bold">Expiry date:</span><span>10/16</span></small>
+                                        <small><span class="fw-bold">Name:</span><span>Kumar</span></small>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-4 mb-lg-0 mb-3">
+                                <div class="card p-3">
+                                    <div class="img-box">
+                                        <img src="https://www.freepnglogos.com/uploads/discover-png-logo/credit-cards-discover-png-logo-4.png"
+                                             alt="">
+                                    </div>
+                                    <div class="number">
+                                        <label class="fw-bold">**** **** **** 1060</label>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <small><span class="fw-bold">Expiry date:</span><span>10/16</span></small>
+                                        <small><span class="fw-bold">Name:</span><span>Kumar</span></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 mt-4">
+                                <div class="card p-3">
+                                    <p class="mb-0 fw-bold h4">Payment Methods</p>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="card p-3">
+                                    <div class="card-body border p-0">
+                                        <p>
+                                            <a class="btn btn-primary w-100 h-100 d-flex align-items-center justify-content-between"
+                                               data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true"
+                                               aria-controls="collapseExample">
+                                                <span class="fw-bold">PayPal</span>
+                                                <span class="fa fa-cc-paypal">
+                                                </span>
+                                            </a>
+                                        </p>
+                                        <div class="collapse p-3 pt-0" id="collapseExample">
+                                            <div class="row">
+                                                <div class="col-8">
+                                                    <p class="h4 mb-0">Summary</p>
+                                                    <p class="mb-0">
+                                                        <span class="fw-bold">Product:</span><span class="c-green">
+                                                            : Name of
+                                                            product
+                                                        </span>
+                                                    </p>
+                                                    <p class="mb-0">
+                                                        <span class="fw-bold">Price:</span><span class="c-green">:$452.90</span>
+                                                    </p>
+                                                    <p class="mb-0">
+                                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque
+                                                        nihil neque
+                                                        quisquam aut
+                                                        repellendus, dicta vero? Animi dicta cupiditate, facilis provident quibusdam ab
+                                                        quis,
+                                                        iste harum ipsum hic, nemo qui!
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body border p-0">
+                                        <p>
+                                            <a class="btn btn-primary p-2 w-100 h-100 d-flex align-items-center justify-content-between"
+                                               data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true"
+                                               aria-controls="collapseExample">
+                                                <span class="fw-bold">Credit Card</span>
+                                                <span class="">
+                                                    <span class="fa fa-cc-mastercard"></span>
+                                                    <span class="fa fa-cc-visa"></span>
+                                                    <span class="fa fa-credit-card-alt"></span>
+                                                </span>
+                                            </a>
+                                        </p>
+                                        <div class="collapse show p-3 pt-0" id="collapseExample">
+                                            <div class="row">
+                                                <div class="col-lg-5 mb-lg-0 mb-3">
+                                                    <p class="h4 mb-0">Summary</p>
+                                                    <p class="mb-0">
+                                                        <span class="fw-bold">Product:</span><span class="c-green">
+                                                            : Name of
+                                                            product
+                                                        </span>
+                                                    </p>
+                                                    <p class="mb-0">
+                                                        <span class="fw-bold">Price:</span>
+                                                        <span class="c-green">:$452.90</span>
+                                                    </p>
+                                                    <p class="mb-0">
+                                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque
+                                                        nihil neque
+                                                        quisquam aut
+                                                        repellendus, dicta vero? Animi dicta cupiditate, facilis provident quibusdam ab
+                                                        quis,
+                                                        iste harum ipsum hic, nemo qui!
+                                                    </p>
+                                                </div>
+                                                <div class="col-lg-7">
+                                                    <form action="" class="form">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <div class="form__div">
+                                                                    <input type="text" class="form-control" placeholder=" ">
+                                                                    <label for="" class="form__label">Card Number</label>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-6">
+                                                                <div class="form__div">
+                                                                    <input type="text" class="form-control" placeholder=" ">
+                                                                    <label for="" class="form__label">MM / yy</label>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-6">
+                                                                <div class="form__div">
+                                                                    <input type="password" class="form-control" placeholder=" ">
+                                                                    <label for="" class="form__label">cvv code</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <div class="form__div">
+                                                                    <input type="text" class="form-control" placeholder=" ">
+                                                                    <label for="" class="form__label">name on the card</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <div class="btn btn-primary w-100">Sumbit</div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="btn btn-primary payment" id="Pagamento">
+                                    <a href="serviços.html"><button type="button" id="LimparCarrinho" onclick="clean()" class="btn btn-sm" title=" ">Efetuar Pagamento</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+    <nav id="rodape" class="navbar navbar-expand-lg">
+        <div class="container mt-3">
+            <div class="col-md-6 mb-3">
+                <div>Estamos aqui para tornar o seu espaço impecável. Dúvidas? Entre em contato conosco. A sua satisfação é a nossa prioridade!</div>
+                <br />
+                <div style="font-size:15px;">
+                    <div><i class="fa fa-phone">  +351 9XX XXX XXX</i></div>
+                    <div><i class="fa fa-envelope">  tiddynow@example.com</i></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="">
+                    <br />
+                    <br />
+                    <div>Dias úteis - 7h às 22h<br />Fins de semana e feriados - 9h às 20h</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- jQuery primeiro, depois Popper.js e, por fim, Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        // Função para calcular e exibir o subtotal
+        function calculateSubtotal() {
+            const loggedInUser = localStorage.getItem('loggedInUser');
+            const userCart = JSON.parse(localStorage.getItem('userCart')) || {};
+            const cartItems = userCart[loggedInUser] || [];
+
+            let subtotal = 0;
+
+            cartItems.forEach((item) => {
+                subtotal += item.price;
+            });
+
+            $('#subtotal').text(subtotal.toFixed(2) + "€");
+        }
+        // Seletor de Hora
+        var selectHora = document.getElementById("Hora");
+
+        // Adicione opções ao seletor de hora
+        for (var i = 7; i <= 22; i++) {
+            var option = document.createElement("option");
+            option.value = i;
+            option.text = i;
+            selectHora.appendChild(option);
+        }
+
+        $(function () {
+            $("#data").datepicker({
+                dateFormat: 'dd/mm',
+                changeYear: false,
+                changeMonth: true,
+                showButtonPanel: true,
+                onClose: function (dateText, inst) {
+                    $(this).datepicker('setDate', '01/' + dateText);
+                }
+            });
+        });
+
+        $(document).ready(function () {
+            $('#exampleModal1 input, #exampleModal1 textarea').on('input', function () {
+                var empty = false;
+                $('#exampleModal1 input, #exampleModal1 textarea').each(function () {
+                    if ($(this).val() == '') {
+                        empty = true;
+                    }
+                });
+
+                if (empty) {
+                    $('#btnPagamento').prop('disabled', true);
+                } else {
+                    $('#btnPagamento').prop('disabled', false);
+                }
+            });
+
+            
+            $('#btnPagamento').on('click', function () {
+                // Obtém os valores dos campos do formulário
+                var distrito = $('#distrito').val();
+                var rua = $('#Rua').val();
+                var data = $('#data').val();
+                var hora = $('#Hora').val();
+                var observacoes = $('#Observacoes').val();
+
+                // Obtém o carrinho do utilizador da localStorage
+                var userCart = JSON.parse(localStorage.getItem('userCart')) || {};
+                var loggedInUser = localStorage.getItem('loggedInUser');
+
+                // Obtém os detalhes do utilizador da localStorage
+                var userDetails = JSON.parse(localStorage.getItem('userDetails')) || [];
+
+                // Encontra o utilizador atual nos detalhes
+                var currentUser = userDetails.find(user => user.email === loggedInUser);
+
+                // Cria um objeto com os dados do serviço e um ID aleatório
+                var existingServices = JSON.parse(localStorage.getItem('services')) || [];
+                var newService = userCart[loggedInUser].map(cartItem => ({
+                    id: Math.floor(100 + Math.random() * 999), 
+                    serviceName: cartItem.serviceName,
+                    distrito: distrito,
+                    rua: rua,
+                    data: data,
+                    hora: hora,
+                    observacoes: observacoes,
+                    firstName: currentUser.firstName,
+                    lastName: currentUser.lastName,
+                    price: cartItem.price
+                }));
+
+                // Adiciona o serviço ao carrinho do utilizador
+                if (userCart[loggedInUser]) {
+                    userCart[loggedInUser].push(...newService);
+                } else {
+                    userCart[loggedInUser] = newService;
+                }
+
+                // Atualiza o carrinho do utilizador na localStorage
+                localStorage.setItem('userCart', JSON.stringify(userCart));
+
+                // Adiciona o novo serviço ao array existente
+                existingServices.push(...newService);
+
+                // Atualiza o array de serviços na localStorage
+                localStorage.setItem('services', JSON.stringify(existingServices));
+            });
+            calculateSubtotal();
+        });
+
+        function clean() {
+            // Limpa os produtos da localStorage associada ao utilizador
+            var loggedInUser = localStorage.getItem('loggedInUser');
+            if (loggedInUser) {
+                var userCart = JSON.parse(localStorage.getItem('userCart')) || {};
+                userCart[loggedInUser] = [];
+                localStorage.setItem('userCart', JSON.stringify(userCart));
+            }
+
+            $('[data-added="true"]').each(function () {
+                $(this).data('added', false);
+                $(this).closest('.bg-white').find('.cart-btn').text('Adicionar');
+            });
+
+            alert('O seu pagamento foi efetuado.');
+        }
+
+        // Função para carregar os itens do carrinho
+        function loadCartItems() {
+            const loggedInUser = localStorage.getItem('loggedInUser');
+            const logoutLink = document.getElementById('logoutLink');
+            const loginLink = document.getElementById('loginLink');
+
+            if (loggedInUser) {
+                logoutLink.style.display = 'block';
+                loginLink.style.display = 'none';
+
+                const userCart = JSON.parse(localStorage.getItem('userCart')) || {};
+                const cartItems = userCart[loggedInUser] || [];
+
+                const cartBody = document.getElementById('cartBody');
+                cartBody.innerHTML = '';
+
+                cartItems.forEach((item) => {
+                    const serviceName = item.serviceName;
+                    const servicePrice = item.price;
+
+                    const row = cartBody.insertRow();
+                    const cell1 = row.insertCell(0);
+                    const cell2 = row.insertCell(1);
+                    cell1.textContent = serviceName;
+                    cell2.textContent = servicePrice.toFixed(2) + "€";
+                });
+            } else {
+                logoutLink.style.display = 'none';
+                loginLink.style.display = 'block';
+            }
+        }
+
+        // Função para lidar com o logout
+        function handleLogout() {
+            // Limpa os dados relacionados ao utilizador da localStorage
+            localStorage.removeItem('loggedInUser');
+
+            // Redireciona para a página de login ou realiza outras ações de logout conforme necessário
+            window.location.href = 'serviços.html';
+        }
+
+        // Carrega os itens do carrinho quando a página é carregada
+        window.onload = function () {
+            loadCartItems();
+        };
+        calculateSubtotal();
+    </script>
+</body>
+</html>

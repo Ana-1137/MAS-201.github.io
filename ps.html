@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <title>Sign Up Signin</title><link href="loginMenu.css" rel="stylesheet" />
+    <link href="ps-login.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1152183585546178571/1184138897471578193/letter-td-dt-initials-simple-lines-minimal-minimalist-modern-monogram-vector-logo-design_216988-1649.png?ex=658ae249&is=65786d49&hm=c533ccd11a9545b830ab7c6b64560328d2055d6b9bc1ed0f3f17b6e62d2aecf6&">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css'>
+</head>
+
+<body>
+    <div id="form">
+        <div class="container">
+            <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-md-8 col-md-offset-2">
+                <div id="userform">
+                    <div class="tab-content">
+                        <div class="tab-pane fade active in" id="login">
+                            <h2 class="text-uppercase text-center"> Iniciar sessão</h2>
+                            <form id="login">
+                                <div class="form-group">
+                                    <label> Insira o seu e-mail<span class="req">*</span> </label>
+                                    <input type="email" class="form-control" id="email" required data-validation-required-message="Please enter your email address." autocomplete="off">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label> Insira a sua palavra-passe<span class="req">*</span> </label>
+                                    <input type="password" class="form-control" id="password" required data-validation-required-message="Please enter your password" autocomplete="off">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label> Insira o seu código secreto<span class="req">*</span> </label>
+                                    <input type="tel" class="form-control" id="code" required data-validation-required-message="Please enter your phone number." autocomplete="off">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div><i class="fa fa-info-circle text-info"><a href="declaracao.html"> Obter declaração</a></i></div>
+                                <div class="mrgn-30-top">
+                                    <button type="submit" class="btn btn-larger btn-block" />
+                                    Entrar
+                                    </button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
+    </div>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="login.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
+    <script src="../lib/jquery/dist/jquery.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+﻿<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="Serviços">
+    <title>TidyNow-Serviços</title>
+    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1152183585546178571/1184138897471578193/letter-td-dt-initials-simple-lines-minimal-minimalist-modern-monogram-vector-logo-design_216988-1649.png?ex=658ae249&is=65786d49&hm=c533ccd11a9545b830ab7c6b64560328d2055d6b9bc1ed0f3f17b6e62d2aecf6&">
+    <meta name="viewport" content="width=device-width">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
+    <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href=" https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+
+    <style>
+        body {
+            padding-top: 50px; /* Add padding to the bottom to prevent content from being cut off by the footer */
+            background: linear-gradient(to bottom, #ecfeff, #b3d6d2, #aaadd5);
+        }
+
+        #cabeçalho {
+            backdrop-filter: blur(55px);
+            background-color: rgba(135, 206, 250, 0.2);
+        }
+
+        #rodape {
+            background: linear-gradient(to bottom, #05013f, #040a22);
+            color: whitesmoke;
+        }
+        .banner {
+            background: #08152b;
+            background: -webkit-linear-gradient(to right, #0c223c, #1a2391, #56c8be);
+            background: linear-gradient(to right, #0c223c, #1a2391, #56c8be);
+        }
+        .table {
+            background-color: transparent;
+        }
+
+            .table thead th {
+                background-color: transparent;
+            }
+
+            .table tbody td {
+                background-color: transparent;
+            }
+
+                .table thead th.coluna-transparente,
+                .table tbody td.coluna-transparente {
+                    background-color: transparent;
+                }
+    </style>
+</head>
+
+<body>
+    <nav id="cabeçalho" class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#" tabindex="TidyNow"><img src="https://cdn.discordapp.com/attachments/1152183585546178571/1189350056848007178/instagram_profile_image-removebg-preview.png?ex=659dd78e&is=658b628e&hm=51a462ee33fbf1a26c7940889924c7e48ad5bb1d287acddfd683829eead5e5d2&" height="60" style="border: none;" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="ps-serviços.html"><i class="fa fa-handshake-o text-danger"></i> Serviços Disponíveis</a></li>
+
+                </ul>
+                <ul class="navbar-nav justify-content-end">
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="#" onclick="handleLogout()"><i class="fa fa-sign-out text-danger"></i> Log out</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto py-5" style="min-height: calc(100vh - 130px);">
+        <!-- Ajuste a propriedade min-height conforme necessário -->
+        <div class="row py-5">
+            <div class="col-lg-12 mx-auto">
+                <div class="text-white p-3 shadow-sm rounded banner">
+                    <h1 class="display-4">Serviços pendentes</h1>
+
+                </div>
+            </div>
+        </div>
+        <div style="box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);">
+            <table class="table" id="psTable">
+                <thead>
+                    <tr>
+                        <th scope="col">Serviço</th>
+                        <th scope="col">Localidade</th>
+                        <th scope="col">Dia</th>
+                        <th scope="col">Hora</th>
+                        <th scope="col">Nome do Cliente</th>
+                        <th scope="col">Aceitar/Apagar</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <nav id="rodape" class="navbar navbar-expand-lg">
+        <div class="container mt-3">
+            <div class="col-md-6 mb-3">
+                <div>Estamos aqui para tornar o seu espaço impecável. Dúvidas? Entre em contato conosco. A sua satisfação é a nossa prioridade!</div>
+                <br />
+                <div style="font-size:15px;">
+                    <div><i class="fa fa-phone">  +351 9XX XXX XXX</i></div>
+                    <div><i class="fa fa-envelope">  tiddynow@example.com</i></div>
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <br />
+                <br />
+                <div>Dias úteis - 7h às 22h<br />Fins de semana e feriados - 9h às 20h</div>
+            </div>
+        </div>
+    </nav>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Variável global para armazenar a referência à tbody
+        var psTableBody;
+
+        // Função para carregar os serviços pendentes da localStorage 'services'
+        function loadPendingServices() {
+            // Obtém os serviços pendentes da localStorage
+            var pendingServices = JSON.parse(localStorage.getItem('services'));
+
+            // Obtém a tabela
+            var psTable = document.getElementById('psTable');
+
+            // Obtém a referência à tbody
+            psTableBody = psTable.getElementsByTagName('tbody')[0];
+
+            // Limpa o conteúdo existente na tabela
+            psTableBody.innerHTML = '';
+
+            if (pendingServices) {
+                // Verifica se temos um array ou um único serviço
+                if (Array.isArray(pendingServices)) {
+                    // Preenche a tabela com os dados dos serviços pendentes
+                    pendingServices.forEach(function (service) {
+                        addServiceRow(service);
+                    });
+                } else {
+                    // Se é um único serviço, adiciona apenas essa linha
+                    addServiceRow(pendingServices);
+                }
+            }
+        }
+
+        // Função para adicionar uma linha à tabela
+        function addServiceRow(service) {
+            // Cria uma nova linha na tabela
+            var row = psTableBody.insertRow();
+
+            // Adiciona as células com os dados do serviço
+            var serviceNameCell = row.insertCell(0);
+            serviceNameCell.textContent = service.serviceName;
+
+            var distritoCell = row.insertCell(1);
+            distritoCell.textContent = service.distrito;
+
+            var dataCell = row.insertCell(2);
+            dataCell.textContent = service.data;
+
+            var horaCell = row.insertCell(3);
+            horaCell.textContent = service.hora;
+
+            var nomeClienteCell = row.insertCell(4);
+            nomeClienteCell.textContent = service.firstName + ' ' + service.lastName;
+
+            // Adiciona a célula com o botão "Aceitar"
+            var aceitarCell = row.insertCell(5);
+            var aceitarButton = document.createElement('button');
+            aceitarButton.textContent = 'Aceitar';
+            aceitarButton.className = 'btn btn-success';
+            aceitarButton.setAttribute('data-service-id', service.id); // Adiciona o atributo data-service-id
+            aceitarButton.addEventListener('click', handleAceitarClick);
+            aceitarCell.appendChild(aceitarButton);
+        }
+
+
+        function handleAceitarClick(event) {
+            // Obtém o ID do serviço a partir do botão clicado
+            var serviceId = event.target.getAttribute('data-service-id');
+
+            // Aqui você pode adicionar lógica adicional, se necessário, antes de adicionar o botão "Concluída"
+
+            // Obtém a célula onde o botão "Aceitar" está localizado
+            var aceitarCell = event.target.parentNode;
+
+            // Remove o botão "Aceitar" para evitar duplicatas
+            event.target.remove();
+
+            // Adiciona o botão "Concluída" à mesma célula
+            var concluidaButton = document.createElement('button');
+            concluidaButton.textContent = 'Concluída';
+            concluidaButton.className = 'btn btn-info';
+            concluidaButton.setAttribute('data-service-id', serviceId); // Atribui o mesmo ID para referência posterior, se necessário
+            concluidaButton.addEventListener('click', handleConcluidaClick);
+
+            // Verifica se a célula está presente antes de anexar o botão
+            if (aceitarCell) {
+                aceitarCell.appendChild(concluidaButton);
+            }
+        }
+
+        function handleConcluidaClick(event) {
+            // Remove a linha da tabela
+            var row = event.target.closest('tr');
+            if (row) {
+                row.remove();
+            }
+
+            // Obtém o ID do serviço a partir do botão clicado
+            var serviceId = event.target.getAttribute('data-service-id');
+
+            // Obtém os serviços pendentes da localStorage
+            var pendingServices = JSON.parse(localStorage.getItem('services')) || [];
+
+            console.log('Antes da remoção:', pendingServices);
+
+            // Filtra os serviços mantendo apenas aqueles que têm um ID diferente do ID removido
+            pendingServices = pendingServices.filter(function (service) {
+                return service.id.toString() !== serviceId.toString();
+            });
+
+            console.log('Depois da remoção:', pendingServices);
+
+            // Atualiza a localStorage
+            localStorage.setItem('services', JSON.stringify(pendingServices));
+
+            alert("Tarefa conluída com sucesso.")
+        }
+
+
+        // Carrega os serviços pendentes quando a página é carregada
+        window.onload = function () {
+            loadPendingServices();
+        };
+
+        function handleLogout() {
+            // Limpa os dados relacionados ao utilizador da localStorage
+            localStorage.removeItem('loggedInUser');
+            localStorage.removeItem('userCart');
+
+            // Redireciona para a página 'homepage.html'
+            window.location.href = 'homepage.html';
+        }
+    </script>
+</body>
+
+</html>

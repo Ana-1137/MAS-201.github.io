@@ -1,0 +1,282 @@
+﻿<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="Serviços">
+    <title>TidyNow-Serviços</title>
+    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1152183585546178571/1184138897471578193/letter-td-dt-initials-simple-lines-minimal-minimalist-modern-monogram-vector-logo-design_216988-1649.png?ex=658ae249&is=65786d49&hm=c533ccd11a9545b830ab7c6b64560328d2055d6b9bc1ed0f3f17b6e62d2aecf6&">
+    <meta name="viewport" content="width=device-width">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
+    <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="myCSS.css" />
+    <link rel="stylesheet" href=" https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link href="serviços.css" rel="stylesheet" />
+
+    <style>
+        body {
+            padding-top: 50px; /* Add padding to the bottom to prevent content from being cut off by the footer */
+            background: linear-gradient(to bottom, #ecfeff, #b3d6d2, #aaadd5);
+        }
+
+        #cabeçalho {
+            backdrop-filter: blur(55px);
+            background-color: rgba(135, 206, 250, 0.2);
+        }
+
+        #rodape {
+            background: linear-gradient(to bottom, #05013f, #040a22);
+            color: whitesmoke;
+        }
+
+        .banner {
+            background: #08152b;
+            background: -webkit-linear-gradient(to right, #08152b, #05013f, #56c8be);
+            background: linear-gradient(to right, #08152b, #05013f, #56c8be);
+        }
+
+        .p {
+            white-space: nowrap;
+            width: 100%;
+            overflow: hidden; /* "overflow" value must be different from "visible" */
+
+            text-overflow: ellipsis;
+        }
+
+        #container {
+            max-width: 1200px;
+            margin: 60px auto 0; /* Ajuste a margem superior para afastar o conteúdo do cabeçalho */
+            padding: 15px;
+            display: flex;
+            flex-wrap: wrap; /* Permita que os elementos se envolvam quando não houver espaço suficiente */
+        }
+
+        /* Columns */
+        .left-column {
+            width: 65%;
+            position: relative;
+        }
+
+        .right-column {
+            width: 35%;
+            margin-top: 13px;
+        }
+
+        /* Left Column */
+        .left-column img {
+            width: 450px;
+            max-height: 400px; /* Ajuste a altura máxima conforme necessário */
+            position: absolute;
+            left: 100px;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+            .left-column img.active {
+                opacity: 1;
+            }
+
+        /* Product Description */
+        .product-description {
+            border-bottom: 1px solid #E1E8EE;
+            margin-bottom: 20px;
+        }
+
+            .product-description span {
+                font-size: 12px;
+                color: #358ED7;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                text-decoration: none;
+            }
+
+            .product-description h1 {
+                font-weight: 300;
+                font-size: 52px;
+                color: #43484D;
+                letter-spacing: -2px;
+            }
+
+            .product-description p {
+                font-size: 16px;
+                font-weight: 300;
+                color: #040a22;
+                line-height: 24px;
+            }
+
+        
+        /* Product Price */
+        .product-price {
+            display: flex;
+            align-items: center;
+        }
+
+            .product-price span {
+                font-size: 26px;
+                font-weight: 300;
+                color: #43474D;
+                margin-right: 20px;
+            }
+
+        .cart-btn {
+            display: inline-block;
+            background-color: #358ED7;
+            border-radius: 6px;
+            font-size: 16px;
+            color: #FFFFFF;
+            text-decoration: none;
+            padding: 12px 30px;
+            transition: all .5s;
+        }
+
+            .cart-btn:hover {
+                background-color: #64af3d;
+            }
+
+        /* Responsive */
+        @media (max-width: 940px) {
+            .container {
+                flex-direction: column;
+                margin-top: 60px;
+            }
+
+            .left-column,
+            .right-column {
+                width: 100%;
+            }
+
+                .left-column img {
+                    width: 300px;
+                    right: 0;
+                    top: -65px;
+                    left: initial;
+                }
+        }
+
+        @media (max-width: 535px) {
+            .left-column img {
+                max-height: 300px; /* Ajuste a altura máxima para telas menores */
+            }
+        }
+
+        /* Tabela */
+        .table {
+            background-color: rgba(255, 255, 255, 0); /* Cor branca com 0.7 de opacidade */
+        }
+
+            /* Fundo da célula da tabela */
+            .table td {
+                background-color: transparent; /* Define a célula da tabela como transparente */
+            }
+            .table th {
+                background-color: transparent; /* Define a célula da tabela como transparente */
+            }
+    </style>
+</head>
+
+<body>
+    <nav id="cabeçalho" class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html" tabindex="TidyNow"><img src="https://cdn.discordapp.com/attachments/1152183585546178571/1189350056848007178/instagram_profile_image-removebg-preview.png?ex=659dd78e&is=658b628e&hm=51a462ee33fbf1a26c7940889924c7e48ad5bb1d287acddfd683829eead5e5d2&" height="60" style="border: none;" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="sobre.html"><i class="fa fa-book text-primary"></i> Quem Somos</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="serviços.html"><i class="fa fa-handshake-o text-danger"></i> Serviços</a></li>
+
+                </ul>
+                <ul class="navbar-nav justify-content-end">
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="carrinho.html"><i class="fa fa-shopping-cart text-primary"></i> Carrinho</a></li>
+                    <li class="navbar-text hstack"><div class="vr"></div></li>
+                    <li class="nav-item dropstart">
+                        <a class="nav-link" href="index.html" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user-circle text-danger"></i> Conta
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="login.html">Entrar como Utilizador</a>
+                            <a class="dropdown-item" href="ps.html">Entrar como Prestador de Serviços</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main id="container" class="container">
+
+        <!-- Left Column / Headphones Image -->
+        <div class="left-column">
+            <img img src="https://cdn.discordapp.com/attachments/1152183585546178571/1189305360230658058/humi.jpg?ex=659dadee&is=658b38ee&hm=6a02c0015b767073cb33f08e02ff2904a561a6d0dcb3d1265dce9274979ad6d4&" class="active" alt="" />
+        </div>
+
+
+        <!-- Right Column -->
+        <div class="right-column">
+
+            <!-- Product Description -->
+            <div class="product-description">
+                <span>Limpeza</span>
+                <h1>Humidade</h1>
+                <p>
+                    A limpeza de humidade realiza-se para remoção do fungo que se encontra à superfície.
+                    É necessário que o local tenha eletricidade e acesso a água canalizada.
+                    Este serviço inclui produtos e materiais de limpeza especializados para garantir uma boa limpeza.
+                </p>
+            </div>
+
+            <!-- Product Pricing -->
+            <div class="product-price">
+                <span>59,99€</span>
+                <a href="serviços.html" class="cart-btn">Voltar a serviços</a>
+            </div>
+        </div>
+
+        <div class="container mt-5">
+
+                    <table class="table justify-content-center">
+                        <thead>
+                            <tr><th style="text-align:center;" colspan="2">Inclui</th> <th>Exclui</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Avaliação de Humidade</td><td>Remoção de Manchas de Bolor</td><td>Reparos Estruturais Complexos</td></tr>
+                            <tr><td>Desumidificação</td><td>Ventilação Adequada</td><td>Identificação de Fontes Escondidas</td></tr>
+                            <tr><td>Limpeza de Superfícies</td><td>Isolamento de Fontes de Humidade</td><td>Trabalhos de Construção</td></tr>
+                            <tr><td>Tratamento Antifúngico</td><td>Reparação de Danos Estruturais</td><td>Isolamento de Vazamentos Graves</td></tr>
+                            <tr><td>Monitoramento Pós-Limpeza</td><td>Educação do Cliente</td><td>Remoção de Materiais Contaminados</td></tr>
+                        </tbody>
+                    </table>
+        </div>
+        <hr />
+    </main>
+
+    <nav id="rodape" class="navbar navbar-expand-lg">
+        <div class="container mt-3">
+            <div class="col-md-6 mb-3">
+                <div>Estamos aqui para tornar o seu espaço impecável. Dúvidas? Entre em contato conosco. A sua satisfação é a nossa prioridade!</div>
+                <br />
+                <div style="font-size:15px;">
+                    <div><i class="fa fa-phone">  +351 9XX XXX XXX</i></div>
+                    <div><i class="fa fa-envelope">  tiddynow@example.com</i></div>
+                    <br />
+                    <div>Dias úteis - 7h às 22h<br />Fins de semana e feriados - 9h às 20h</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">
+                    <div>Faça parte da nossa equipa e candidate-se a prestador de serviços</div>
+                    <div class="mt-3" id="candidatar"><button type="button" class="btn btn-info btn-sm">Candidate-se</button></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

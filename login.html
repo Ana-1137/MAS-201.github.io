@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <title>Sign Up Signin</title><link href="loginMenu.css" rel="stylesheet" />
+    <link href="login.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1152183585546178571/1184138897471578193/letter-td-dt-initials-simple-lines-minimal-minimalist-modern-monogram-vector-logo-design_216988-1649.png?ex=658ae249&is=65786d49&hm=c533ccd11a9545b830ab7c6b64560328d2055d6b9bc1ed0f3f17b6e62d2aecf6&">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css'>
+</head>
+
+<body>
+    <div id="form">
+        <div class="container">
+            <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-md-8 col-md-offset-2">
+                <div id="userform">
+                    <ul class="nav nav-tabs nav-justified" role="tablist">
+                        <li><a href="#signup" role="tab" data-toggle="tab">Registar</a></li>
+                        <li class="active"><a href="#login" role="tab" data-toggle="tab">Iniciar Sessão</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade in" id="signup">
+                            <h2 class="text-uppercase text-center"> Registe-se</h2>
+                            <form id="signup">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label> Primeiro Nome<span class="req">*</span> </label>
+                                            <input type="text" class="form-control" id="first_name" required data-validation-required-message="Please enter your name." autocomplete="off">
+                                            <p class="help-block text-danger"></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label> Último Nome<span class="req">*</span> </label>
+                                            <input type="text" class="form-control" id="last_name" required data-validation-required-message="Please enter your name." autocomplete="off">
+                                            <p class="help-block text-danger"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label> O seu e-mail<span class="req">*</span> </label>
+                                    <input type="email" class="form-control" id="email" required data-validation-required-message="Please enter your email address." autocomplete="off">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label> O seu telemóvel<span class="req">*</span> </label>
+                                    <input type="tel" class="form-control" id="phone" required data-validation-required-message="Please enter your phone number." autocomplete="off">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label> Palavra-passe<span class="req">*</span> </label>
+                                    <input type="password" class="form-control" id="password" required data-validation-required-message="Please enter your password" autocomplete="off">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="mrgn-30-top">
+                                    <button type="button" class="btn btn-larger btn-block" id="signupBtn">Registrar</button>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="tab-pane fade active in" id="login">
+                            <h2 class="text-uppercase text-center"> Iniciar Sessão</h2>
+                            <form id="loginForm" onsubmit="handleLogin(); return false;">
+                                <div class="form-group">
+                                    <label> O seu e-mail<span class="req">*</span> </label>
+                                    <input type="email" class="form-control" id="loginEmail" required data-validation-required-message="Please enter your email address." autocomplete="off">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <label> Palavra-passe<span class="req">*</span> </label>
+                                    <input type="password" class="form-control" id="loginPassword" required data-validation-required-message="Please enter your password" autocomplete="off">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div><i class="fa fa-info-circle text-info"><a href="login-ps.html"> Entrar como prestador de serviços</a></i></div>
+                                <div class="mrgn-30-top">
+                                    <button type="submit" class="btn btn-larger btn-block">Iniciar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
+    </div>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="login.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
+    <script src="../lib/jquery/dist/jquery.min.js"></script>
+    <script>
+        function handleLogin() {
+            const emailInput = document.getElementById('loginEmail').value;
+            const passwordInput = document.getElementById('loginPassword').value;
+
+            // Simples validação de login (por favor, use uma solução mais segura em um ambiente de produção)
+            const storedDetails = localStorage.getItem('userDetails');
+
+            if (storedDetails) {
+                // Se existirem detalhes armazenados, verifique as credenciais
+                const storedUsers = JSON.parse(storedDetails);
+
+                const user = storedUsers.find(user => user.email === emailInput && user.password === passwordInput);
+
+                if (user) {
+                    // Credenciais corretas, faça o login
+                    localStorage.setItem('loggedInUser', user.email);
+                    window.location.href = 'serviços.html';
+                } else {
+                    alert('Login falhou. Verifique suas credenciais.');
+                }
+            } else {
+                alert('Nenhuma conta registrada. Por favor, registre uma conta antes de fazer login.');
+            }
+        }
+
+    </script>
+</body>
+</html>

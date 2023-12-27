@@ -40,7 +40,7 @@ $(document).ready(function () {
         // Simples validação de login (por favor, use uma solução mais segura em um ambiente de produção)
         if (emailInput === '1@a' && passwordInput === '123') {
             localStorage.setItem('loggedInUser', emailInput);
-            window.location.href = 'homepage.html';
+            window.location.href = 'index.html';
         } else {
             alert('Login falhou. Verifique suas credenciais.');
         }
